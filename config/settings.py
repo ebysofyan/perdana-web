@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'apps.dashboard',
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS
