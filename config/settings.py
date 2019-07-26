@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.dashboard',
+    'apps.organization'
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS
