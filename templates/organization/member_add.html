@@ -9,74 +9,119 @@
 </ol>
 {% endblock breadcrumb %}
 {% block content %}
-<div class="card">
-    <div class="card-header">
-        <i class="fa fa-align-justify"></i>
-        Semua Anggota
-        <a href="{% url 'organization:member_add' %}" class="btn btn-primary btn-sm" style="float: right">
-            Tambah Anggota Baru
-        </a>
-    </div>
-    <div class="card-body">
-        <table class="table table-responsive-sm">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>ID Anggota</th>
-                    <th>Nama Lengkap</th>
-                    <th>No. HP</th>
-                    <th>Gender</th>
-                    <th>Alamat</th>
-                    <th>Klub Asal</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
+<div class="row">
+    <div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2">
 
-                {% for member in members %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{member.user.username}}</td>
-                    <td>{{member.user.first_name}} {{member.user.last_name}}</td>
-                    <td>{{member.phone}}</td>
-                    <td>{{member.gender}}</td>
-                    <td>{{member.address}}</td>
-                    <td>{{member.club.name}}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" type="button">
-                            Lihat
-                        </button>
-                        <button class="btn btn-success btn-sm" type="button">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button class="btn btn-danger btn-sm" type="button">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <ul class="pagination" style="float: right">
-            <li class="page-item">
-                <a class="page-link" href="#">Prev</a>
-            </li>
-            <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">4</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'organization:member_add' %}" method="POST">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-header">
+                    <strong>Identitas Diri</strong>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="company">ID Anggota</label>
+                        <input class="form-control" name="username" type="text" placeholder="PD123xxxx . . ." required>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="city">Nama Depan</label>
+                            <input class="form-control" name="first_name" type="text" placeholder="Sa'ad bin" required>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="postal-code">Nama Belakang</label>
+                            <input class="form-control" name="last_name" type="text" placeholder="Abi Waqqash" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Password</label>
+                        <input class="form-control" name="password" type="password" placeholder="*****" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">No. HP</label>
+                        <input class="form-control" name="phone" type="text" placeholder="087xxxx" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">Email</label>
+                        <input class="form-control" name="phone" type="email" placeholder="it@perdana.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="street">Gender</label>
+                        <div style="display: flex; flex-direction: row">
+                            <div class="form-check mr-1">
+                                <input class="form-check-input" type="radio" value="pria" name="gender"> Pria
+                            </div> &nbsp;&nbsp;&nbsp;
+                            <div class="form-check mr-1">
+                                <input class="form-check-input" type="radio" value="wanita" name="gender"> Wanita
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="city">Tempat Lahir</label>
+                            <input class="form-control" name="born_place" type="text" placeholder="Mataram . . .">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="postal-code">Tanggal Lahir</label>
+                            <input class="form-control" name="born_date" type="date" placeholder="Abi Waqqash">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">Alamat</label>
+                        <textarea class="form-control" name="address" placeholder="Jalan . . ." rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">Apakah member ini ketua klub?</label><br>
+                        <input name="lead" type="checkbox" value="1" /> Ya
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">Klub asal</label>
+                        <select name="club" id="" class="form-control" required>
+                            <option value="">===== Pilih =====</option>
+                            {% for club in clubs %}
+                            <option value="{{club.pk}}">{{club.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vat">Foto Anggota</label><br>
+                        <input name="photo" type="file">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <strong>Identitas Fisik</strong>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <label for="city">Tinggi Badan (cm)</label>
+                            <input class="form-control" name="body_height" type="number" placeholder="0">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="postal-code">Berat Badan (kg)</label>
+                            <input class="form-control" name="body_weight" type="number" placeholder="0">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="postal-code">Draw Length (inch)</label>
+                            <input class="form-control" name="draw_length" type="number" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock content %}
