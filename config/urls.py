@@ -18,9 +18,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from apps.organization.views import LoginView
+from apps.core.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', IndexView.as_view(), name='index'),
     path('login', LoginView.as_view(), name='login'),
     path('dashboard/', include(('apps.dashboard.urls', 'dashboard'), namespace='dashboard')),
     path('organization/', include(('apps.organization.urls', 'organization'), namespace='organization')),

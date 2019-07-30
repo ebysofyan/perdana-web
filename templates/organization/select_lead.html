@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="vat">Ketua</label>
-                        <select name="member_id" id="" class="form-control">
+                        <select name="member_id" id="" class="form-control" required>
                             <option value="">===== Pilih =====</option>
                             {% for member in members %}
                             <option value="{{member.pk}}" {% if object.lead.pk == member.pk %} selected {% endif %}>

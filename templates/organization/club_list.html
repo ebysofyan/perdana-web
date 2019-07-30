@@ -48,19 +48,22 @@
                     </td>
                     <td>
                         {% if club.lead %}
-                        {{club.lead.user.first_name}} {{club.lead.user.last_name}}
+                        {{club.lead.user.first_name}} {{club.lead.user.last_name}} &nbsp; &nbsp; <a
+                          class="btn btn-light"  href="{% url 'organization:club_select_lead' pk=club.pk %}">
+                            Ganti
+                        </a>
                         {% else %}
-                        <label for="" class="text-danger">Belum ada</label>
+                        <label for="" class="text-danger">Belum ada ketua &nbsp; &nbsp;
+                            <a class="btn btn-light" href="{% url 'organization:club_select_lead' pk=club.pk %}">
+                                Pilih
+                            </a>
+                        </label>
                         {% endif %}
                     </td>
                     <td>
                         <button class="btn btn-primary btn-sm" type="button">
                             Lihat
                         </button>
-                        <a href="{% url 'organization:club_select_lead' pk=club.pk %}" class="btn btn-primary btn-sm"
-                            type="button">
-                            <i class="fa fa-user"></i>
-                        </a>
                         <button class="btn btn-success btn-sm" type="button">
                             <i class="fa fa-edit"></i>
                         </button>

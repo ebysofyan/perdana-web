@@ -30,3 +30,6 @@ RUN apt-get update && apt-get install -y default-libmysqlclient-dev \
 #CMD /bin/bash -c "source activate myenv && python3 -m perdana_member"
 
 # CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8087"]
+RUN python manage.py collectstatic
+RUN python manage.py makemigrations && python manage.py migrate
+CMD gunicorn --bind 0.0.0.0:$PORT config.wsgi
