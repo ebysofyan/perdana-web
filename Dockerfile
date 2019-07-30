@@ -29,4 +29,4 @@ RUN apt-get update && apt-get install -y default-libmysqlclient-dev \
 #RUN conda env create -f environment.yml
 #CMD /bin/bash -c "source activate myenv && python3 -m perdana_member"
 
-CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8087"]
+# CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8087"]
