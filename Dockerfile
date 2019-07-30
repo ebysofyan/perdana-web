@@ -19,5 +19,5 @@ ADD . /app
 RUN apt-get update && apt-get install -y default-libmysqlclient-dev \
     && pip install --upgrade pip && pip install -r requirements.txt
 
-RUN python manage.py makemigrations && python manage.py migrate
+# RUN python manage.py makemigrations && python manage.py migrate
 # RUN python manage.py collectstatic --noinput
