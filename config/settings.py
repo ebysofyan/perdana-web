@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ebzt%r0^+&+@_ppqqpve545^k7%!b&eao5(9_$ccxyd-%jvr_@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'perdana-member.herokuapp.com'
+]
 
 
 # Application definition
