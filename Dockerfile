@@ -3,7 +3,7 @@
 # OS Support also exists for jessie & stretch (slim and full).
 # See https://hub.docker.com/r/library/python/ for all supported Python
 # tags from Docker Hub.
-FROM python:3.6
+FROM python:3.7
 ENV PYTHONUNBUFFERED 1
 
 # If you prefer miniconda:

@@ -8,8 +8,10 @@ services:
     command: python manage.py runserver 0.0.0.0:8087
     ports:
       - 8087:8087
-    links:
-      - db:db
+    depends_on:
+      - db
+    volumes: 
+    - .:/app
 
   db:
     image: mysql:5.7

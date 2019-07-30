@@ -9,6 +9,8 @@ class Club(TimeStampedModel):
     name = models.CharField(max_length=100)
     address = models.TextField()
     date_register = models.DateField()
+    lead = models.OneToOneField('Member', on_delete=models.SET_NULL, null=True, related_name='leading_club')
+    logo = models.ImageField(upload_to='logo/%Y/%m/%d', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -33,7 +35,7 @@ class Member(TimeStampedModel):
     body_height = models.CharField(max_length=25, null=True, blank=True, default="0")
     body_weight = models.CharField(max_length=25, null=True, blank=True, default="0")
     draw_length = models.CharField(max_length=25, null=True, blank=True, default="0")
-    lead = models.BooleanField(default=False, null=True, blank=True)
+    # lead = models.BooleanField(default=False, null=True, blank=True)
     club = models.ForeignKey(Club, on_delete=models.SET_NULL, null=True, blank=True, related_name='member_set')
     photo = models.ImageField(upload_to='photo/%Y/%m/%d', null=True, blank=True)
 

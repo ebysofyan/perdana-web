@@ -10,7 +10,7 @@
 {% endblock breadcrumb %}
 {% block content %}
 <div class="row">
-    <div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2">
+    <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1">
 
         {% if messages %}
         {% for message in messages %}
@@ -78,13 +78,13 @@
                         <label for="vat">Alamat</label>
                         <textarea class="form-control" name="address" placeholder="Jalan . . ." rows="2"></textarea>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="vat">Apakah member ini ketua klub?</label><br>
                         <input name="lead" type="checkbox" value="1" /> Ya
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="vat">Klub asal</label>
-                        <select name="club" id="" class="form-control" required>
+                        <select name="club_id" class="form-control" required>
                             <option value="">===== Pilih =====</option>
                             {% for club in clubs %}
                             <option value="{{club.pk}}">{{club.name}}</option>

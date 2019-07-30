@@ -2,10 +2,14 @@ from django import forms
 from . import models
 
 
+class ClubLeadForm(forms.Form):
+    member_id = forms.CharField()
+
+
 class ClubForm(forms.ModelForm):
     class Meta:
         model = models.Club
-        fields = '__all__'
+        exclude = ['lead', ]
 
 
 class MemberForm(forms.ModelForm):
@@ -14,7 +18,8 @@ class MemberForm(forms.ModelForm):
     first_name = forms.CharField(max_length=45)
     last_name = forms.CharField(max_length=45)
     email = forms.CharField(max_length=45, required=False)
+    club_id = forms.CharField(max_length=5)
 
     class Meta:
         model = models.Member
-        exclude = ['user', ]
+        exclude = ['user', 'club', ]
