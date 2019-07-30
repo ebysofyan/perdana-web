@@ -20,16 +20,4 @@ RUN apt-get update && apt-get install -y default-libmysqlclient-dev \
     && pip install --upgrade pip && pip install -r requirements.txt
 
 RUN python manage.py makemigrations && python manage.py migrate
-RUN python manage.py collectstatic --noinput
-# CMD ["python3", "-m", "perdana_member"]
-
-# Using pipenv:
-#RUN python3 -m pip install pipenv
-#RUN pipenv install --ignore-pipfile
-#CMD ["pipenv", "run", "python3", "-m", "perdana_member"]
-
-# Using miniconda (make sure to replace 'myenv' w/ your environment name):
-#RUN conda env create -f environment.yml
-#CMD /bin/bash -c "source activate myenv && python3 -m perdana_member"
-
-# CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8087"]
+# RUN python manage.py collectstatic --noinput
