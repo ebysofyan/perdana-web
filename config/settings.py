@@ -25,7 +25,9 @@ SECRET_KEY = 'ebzt%r0^+&+@_ppqqpve545^k7%!b&eao5(9_$ccxyd-%jvr_@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'perdana-member.herokuapp.com'
+]
 
 
 # Application definition
