@@ -34,3 +34,4 @@ pylint-django
 autopep8
 
 timeago
+ipython

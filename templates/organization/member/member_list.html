@@ -43,15 +43,16 @@
                     <td>{{member.address}}</td>
                     <td>{{member.club.name}}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm" type="button">
+                        <a href="{% url 'organization:member_detail' member.pk %}" class="btn btn-primary btn-sm">
                             Lihat
-                        </button>
-                        <button class="btn btn-success btn-sm" type="button">
+                        </a>
+                        <a href="{% url 'organization:member_edit' member.pk %}" class="btn btn-success btn-sm">
                             <i class="fa fa-edit"></i>
-                        </button>
-                        <button class="btn btn-danger btn-sm" type="button">
+                        </a>
+                        <a href="{% url 'organization:member_delete' member.pk %}"
+                            onclick="return confirm('Lanjutkan hapus anggota?')" class="btn btn-danger btn-sm">
                             <i class="fa fa-trash"></i>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}

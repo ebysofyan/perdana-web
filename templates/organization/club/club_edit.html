@@ -5,7 +5,8 @@
     <li class="breadcrumb-item">
         <a href="{% url 'organization:clubs' %}">Klub</a>
     </li>
-    <li class="breadcrumb-item active">Add</li>
+    <li class="breadcrumb-item">Edit</li>
+    <li class="breadcrumb-item active">{{object.name}}</li>
 </ol>
 {% endblock breadcrumb %}
 {% block content %}
@@ -20,7 +21,7 @@
         {% endfor %}
         {% endif %}
 
-        <form action="{% url 'organization:club_add' %}" method="POST">
+        <form enctype="multipart/form-data" action="{% url 'organization:club_edit' object.pk %}" method="POST">
             {% csrf_token %}
             <div class="card">
                 <div class="card-header">
@@ -29,15 +30,17 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="company">Nama Klub</label>
-                        <input class="form-control" name="name" type="text" required>
+                        <input class="form-control" name="name" type="text" required value="{{object.name}}">
                     </div>
                     <div class="form-group">
                         <label for="vat">Alamat</label>
-                        <textarea class="form-control" name="address" placeholder="Jalan . . ." rows="2"></textarea>
+                        <textarea class="form-control" name="address" placeholder="Jalan . . ."
+                            rows="2">{{object.address}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="company">Tanggal Bergabung</label>
-                        <input class="form-control" name="date_register" type="date" required>
+                        <input class="form-control" name="date_register" type="text" required
+                            value="{{object.date_register}}">
                     </div>
                     <!-- <div class="form-group">
                         <label for="vat">Ketua</label>
@@ -50,12 +53,18 @@
                     </div> -->
                     <div class="form-group">
                         <label for="vat">Logo</label><br>
-                        <input name="logo" type="file">
+                        <div style="display: flex; flex-direction: column">
+                            {% if object.logo %}
+                            <a style="margin-bottom: 8px;" target="_blank"
+                                href="{{object.logo.url}}">{{object.logo.url}}</a>
+                            {% endif %}
+                            <input name="logo" type="file">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+                <button class="btn btn-primary btn-block" type="submit">Update</button>
             </div>
         </form>
     </div>

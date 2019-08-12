@@ -14,7 +14,7 @@ class ClubForm(forms.ModelForm):
 
 class MemberForm(forms.ModelForm):
     username = forms.CharField(max_length=45)
-    password = forms.CharField(max_length=45)
+    password = forms.CharField(max_length=45, required=False)
     first_name = forms.CharField(max_length=45)
     last_name = forms.CharField(max_length=45)
     email = forms.CharField(max_length=45, required=False)

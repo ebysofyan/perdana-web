@@ -49,7 +49,7 @@
                     <td>
                         {% if club.lead %}
                         {{club.lead.user.first_name}} {{club.lead.user.last_name}} &nbsp; &nbsp; <a
-                          class="btn btn-light"  href="{% url 'organization:club_select_lead' pk=club.pk %}">
+                            class="btn btn-light" href="{% url 'organization:club_select_lead' pk=club.pk %}">
                             Ganti
                         </a>
                         {% else %}
@@ -64,12 +64,13 @@
                         <button class="btn btn-primary btn-sm" type="button">
                             Lihat
                         </button>
-                        <button class="btn btn-success btn-sm" type="button">
+                        <a href="{% url 'organization:club_edit' club.pk %}" class="btn btn-success btn-sm">
                             <i class="fa fa-edit"></i>
-                        </button>
-                        <button class="btn btn-danger btn-sm" type="button">
+                        </a>
+                        <a href="{% url 'organization:club_delete' club.pk %}"
+                            onclick="return confirm('Lanjutkan hapus klub?')" class="btn btn-danger btn-sm">
                             <i class="fa fa-trash"></i>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}
