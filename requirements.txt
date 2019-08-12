@@ -1,4 +1,4 @@
-Django==2.2.3
+Django>=2.2.4
 Celery==4.3
 redis
 
@@ -7,6 +7,8 @@ markdown==3.0.1
 django-filter==2.1.0
 djangorestframework-jwt==1.11.0
 django-oauth-toolkit==1.2.0
+django-braces==1.13.0
+django-heroku
 
 rest-social-auth==2.2.0
 
@@ -32,3 +34,4 @@ pylint-django
 autopep8
 
 timeago
+ipython

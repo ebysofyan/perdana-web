@@ -1,0 +1,19 @@
+{
+  "name": "perdana_member",
+  "version": "1.0.0",
+  "description": "perdana member apps",
+  "main": "index.js",
+  "repository": "https://github.com/ebysofyan/perdana_member.git",
+  "author": "Eby Sofyan Fadly <eby.sofyan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@coreui/coreui": "2.1.12",
+    "jquery": "^3.4.1",
+    "pace-js": "^1.0.2",
+    "popper.js": "^1.15.0",
+    "simple-line-icons": "^2.4.1"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0"
+  }
+}

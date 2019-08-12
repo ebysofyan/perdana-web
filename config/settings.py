@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,9 @@ SECRET_KEY = 'ebzt%r0^+&+@_ppqqpve545^k7%!b&eao5(9_$ccxyd-%jvr_@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'perdana-member.herokuapp.com'
+]
 
 
 # Application definition
@@ -46,6 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+
+    'apps.dashboard',
+    'apps.organization'
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS
@@ -76,6 +83,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'app_tags': 'apps.core.templatetags.app_tags',
+            }
         },
     },
 ]
@@ -116,7 +126,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'id'
 
 TIME_ZONE = 'Asia/Makassar'
 
@@ -165,3 +176,5 @@ try:
         pass
 except ImportError:
     pass
+
+django_heroku.settings(locals())

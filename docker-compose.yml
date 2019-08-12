@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  perdana_member:
+    restart: always
+    image: perdana_member
+    build: .
+    command: python manage.py runserver 0.0.0.0:8087
+    ports:
+      - 8087:8087
+    depends_on:
+      - db
+    volumes: 
+      - .:/app
+      
+  db:
+    image: mysql:5.7
+    ports:
+      - '3307:3306'
+    environment:
+       MYSQL_DATABASE: 'perdana_db'
+       MYSQL_USER: 'perdana'
+       MYSQL_PASSWORD: 'db123'
+       MYSQL_ROOT_PASSWORD: 'db123'

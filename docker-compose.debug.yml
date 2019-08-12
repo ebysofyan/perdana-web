@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    environment:
+       MYSQL_DATABASE: 'perdana_db'
+       MYSQL_USER: 'root'
+       MYSQL_PASSWORD: 'db123'
+       MYSQL_ROOT_PASSWORD: 'db123'
+
+  perdana_member:
+    image: perdana_member
+    build: .
+    command: python manage.py runserver 0.0.0.0:8087
+    ports:
+      - 8087:8087
+    depends_on: 
+      - db

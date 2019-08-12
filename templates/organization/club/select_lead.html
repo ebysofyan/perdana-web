@@ -1,0 +1,51 @@
+{% extends "base/index.html" %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Organisasi</li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'organization:clubs' %}">Klub</a>
+    </li>
+    <li class="breadcrumb-item active">Ketua</li>
+</ol>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'organization:club_select_lead' pk=object.pk %}" method="POST">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-header">
+                    <strong>Tentukan Ketua Klub #{{object.name}}</strong>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="vat">Ketua</label>
+                        <select name="member_id" id="" class="form-control" required>
+                            <option value="">===== Pilih =====</option>
+                            {% for member in members %}
+                            <option value="{{member.pk}}" {% if object.lead.pk == member.pk %} selected {% endif %}>
+                                {{member.user.first_name}} {{member.user.last_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+    </div>
+    </form>
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+    console.log("Dashboard test")
+</script>
+{% endblock js %}

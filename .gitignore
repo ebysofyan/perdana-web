@@ -2,12 +2,17 @@
 .vscode/*
 media/
 media/*
+static/root/
+static/root/*
+static/vendors/
+static/vendors/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 *.pyc
+*.ipynb
 # C extensions
 *.so
 
