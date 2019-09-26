@@ -57,7 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for member in club.member_set.all  %}
+                        {% for member in club.members.all  %}
                         <tr>
                             <td>{{forloop.counter}}</td>
                             <td>{{member.user.username}}</td>

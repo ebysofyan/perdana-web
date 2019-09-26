@@ -40,8 +40,8 @@
                     <td>{{club.address}}</td>
                     <td>{{club.date_register|date:"d M Y"}}</td>
                     <td>
-                        {% if club.member_set %}
-                        {{ club.member_set.count }}
+                        {% if club.members %}
+                        {{ club.members.count }}
                         {% else %}
                         0
                         {% endif %}

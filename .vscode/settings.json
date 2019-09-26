@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "/opt/anaconda3/envs/perdana/bin/python",
+    "python.pythonPath": "/opt/anaconda3/envs/lobar/bin/python",
     "liveServer.settings.port": 5501
 }

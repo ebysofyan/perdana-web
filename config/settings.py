@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'apps.dashboard',
-    'apps.organization'
+    'apps.organization',
+    'apps.practice',
+    'apps.equipment',
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS
@@ -168,4 +170,3 @@ try:
         pass
 except ImportError:
     pass
-
