@@ -19,6 +19,18 @@ class Club(TimeStampedModel):
         db_table = 'club'
 
 
+class Division(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True, default=None)
+    pic = models.OneToOneField('Member', on_delete=models.SET_NULL, null=True, related_name='division_pic')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'division'
+
+
 class Member(TimeStampedModel):
     """
     Use card_number/registration_number as username
@@ -36,7 +48,8 @@ class Member(TimeStampedModel):
     body_weight = models.CharField(max_length=25, null=True, blank=True, default="0")
     draw_length = models.CharField(max_length=25, null=True, blank=True, default="0")
     # lead = models.BooleanField(default=False, null=True, blank=True)
-    club = models.ForeignKey(Club, on_delete=models.SET_NULL, null=True, blank=True, related_name='member_set')
+    club = models.ForeignKey(Club, on_delete=models.SET_NULL, null=True, blank=True, related_name='members')
+    division = models.ForeignKey(Division, on_delete=models.SET_NULL, null=True, blank=True, related_name='members')
     photo = models.ImageField(upload_to='photo/%Y/%m/%d', null=True, blank=True)
 
     def __str__(self):
