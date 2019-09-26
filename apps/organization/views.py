@@ -105,6 +105,11 @@ class ClubLeadSelectFormView(FormView):
         return self.get(self.request)
 
 
+class ClubDetailView(DetailView):
+    model = Club
+    template_name = 'organization/club/club_detail.html'
+
+
 class MemberListView(ListView):
     model = Member
     queryset = Member.objects.all()

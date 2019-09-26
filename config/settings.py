@@ -11,11 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -26,10 +24,7 @@ SECRET_KEY = 'ebzt%r0^+&+@_ppqqpve545^k7%!b&eao5(9_$ccxyd-%jvr_@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'perdana-member.herokuapp.com'
-]
-
+ALLOWED_HOSTS = ['perdana-member.herokuapp.com', ]
 
 # Application definition
 
@@ -83,7 +78,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries':{
+            'libraries': {
                 'app_tags': 'apps.core.templatetags.app_tags',
             }
         },
@@ -91,7 +86,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -102,7 +96,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -122,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -136,7 +128,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -167,6 +158,7 @@ FCM_DJANGO_SETTINGS = {
 
 try:
     from .local_settings import *
+
     try:
         if DEBUG:
             INSTALLED_APPS += DEBUG_APPS
@@ -177,4 +169,3 @@ try:
 except ImportError:
     pass
 
-django_heroku.settings(locals())
