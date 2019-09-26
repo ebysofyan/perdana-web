@@ -12,5 +12,6 @@ urlpatterns = [
     path('club/add', views.ClubAddFormView.as_view(), name='club_add'),
     path('club/edit/<int:pk>', views.ClubEditFormView.as_view(), name='club_edit'),
     path('club/delete/<int:pk>', views.CLubDeleteView.as_view(), name='club_delete'),
+    path('clubs/detail/<int:pk>',views.ClubDetailView.as_view(), name='club_detail'),
     path('club/<int:pk>/lead', views.ClubLeadSelectFormView.as_view(), name='club_select_lead'),
 ]

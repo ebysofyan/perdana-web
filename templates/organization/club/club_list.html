@@ -61,9 +61,10 @@
                         {% endif %}
                     </td>
                     <td>
-                        <button class="btn btn-primary btn-sm" type="button">
+                        <!-- <button class="btn btn-primary btn-sm" type="button">
                             Lihat
-                        </button>
+                        </button> -->
+                        <a href="{% url 'organization:club_detail' club.pk %}" class="btn btn-primary btn-sm">Lihat</a>
                         <a href="{% url 'organization:club_edit' club.pk %}" class="btn btn-success btn-sm">
                             <i class="fa fa-edit"></i>
                         </a>

@@ -7,6 +7,9 @@ static/root/*
 static/vendors/
 static/vendors/*
 
+node_modules/
+node_modules/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

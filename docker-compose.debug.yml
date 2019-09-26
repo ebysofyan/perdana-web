@@ -8,8 +8,8 @@ services:
     environment:
        MYSQL_DATABASE: 'perdana_db'
        MYSQL_USER: 'root'
-       MYSQL_PASSWORD: 'db123'
-       MYSQL_ROOT_PASSWORD: 'db123'
+       MYSQL_PASSWORD: '29494*'
+       MYSQL_ROOT_PASSWORD: '29494*'
 
   perdana_member:
     image: perdana_member
