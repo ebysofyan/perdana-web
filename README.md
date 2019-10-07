@@ -1,2 +1,1 @@
-# perdana_member
-PERDANA (Persatuan Panahan Berkuda) Member Application
+## This repository has been move into perdana-indonesia-app
